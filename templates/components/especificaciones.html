@@ -1,0 +1,73 @@
+<div class="bg-white text-black p-6 rounded-lg shadow-md ">
+    <div class="space-y-6">
+        <!-- Madera -->
+        <div class="border-b border-gray-200 pb-4">
+            <h3 class="text-xl font-bold mb-2">Madera</h3>
+            <ul class="space-y-1">
+                <li class="flex items-start">
+                    <span class="mr-2">•</span>
+                    <span>Tapa: Cirpes</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2">•</span>
+                    <span>Fondo y aros: Chaca (Triplay enchapado)</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2">•</span>
+                    <span>Diapason: Balsmamo</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2">•</span>
+                    <span>Puente: Balsamo</span>
+                </li>
+            </ul>
+        </div>
+        <!-- Accesorios -->
+        <div class="border-b border-gray-200 pb-4">
+            <h3 class="text-xl font-bold mb-2">Accesorios</h3>
+            <ul class="space-y-1">
+                {% for accesorio in guitarra.accesorios.all %}
+                    <li class="flex items-start">
+                        <span class="mr-2">•</span>
+                        <span>{{ accesorio.nombre }}: {{ accesorio.descripcion }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- Terminado -->
+        <div class="border-b border-gray-200 pb-4">
+            <h3 class="text-xl font-bold mb-2">Terminado</h3>
+            <ul class="space-y-1">
+                <li class="flex items-start">
+                    <span class="mr-2">•</span>
+                    <span>Figura: tradicional de {{ guitarra.curvas }} curva/s de pico</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2">•</span>
+                    <span>Construcción: construcción reforzada con abanicos y huanocuas de madera de {{ guitarra.maderas.0.nombre }} en calidad</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2">•</span>
+                    <span>Acabado: {{ guitarra.acabado }}</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2">•</span>
+                    <span>Color: {{ guitarra.color }}</span>
+                </li>
+            </ul>
+        </div>
+        <!-- Extras -->
+        <div>
+            <h3 class="text-xl font-bold mb-2">Extras</h3>
+            <ul class="space-y-1">
+                <li class="flex items-start">
+                    <span class="mr-2">•</span>
+                    <span>Empaque: Funda de tela reforzada negra</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2">•</span>
+                    <span>Envío: Envío todo México gratis</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2">•</span>
+                    <span>Garantía de 15 día

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}{{ guitarra.nombre }}{% endblock %}
+{% block content %}
+<div class="container mx-auto">
+    <div class="grid mb-20 grid-cols-1 lg:grid-cols-2 p-4 gap-0">
+        <div class="flex-auto flex-row mx-4 my-auto ">
+            {% include 'components/galeria.html' %}
+            <div class="m-4">
+                {% include 'components/detalles.html' %}
+            </div>
+        </div>
+
+        <div class="">
+        <h2 class="text-2xl font-bold p-6">Especificaciones</h2>
+            {% include 'components/especificaciones.html' %}
+        </div>
+    </div>
+</div>
+
+<script>
+function setMainThumbnail(imageUrl, index) {
+    const mainImage = document.getElementById('mainImage');
+    mainImage.src = imageUrl;
+    mainImage.alt = `Main Product Image ${index}`;
+
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach((thumb, i) => {
+        if (i + 1 === index) {
+            thumb.classList.add('border-2', 'border-black');
+            thumb.classList.remove('border', 'border-gray-300');
+        } else {
+            thumb.classList.remove('border-2', 'border-black');
+            thumb.classList.add('border', 'border-gray-300');
+        }
+    });
+}
+</script>
+{% endblock %}
+

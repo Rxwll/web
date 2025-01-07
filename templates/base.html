@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Título de la Página{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'dist/styles.css' %}">
+        <link rel="manifest" href="{% static 'site.manifest' %}">
+        <link rel="icon" href="{% static 'favicon.ico' %}" type ="image/x-icon">
+    </head>
+    
+
+    <body class = "grid min-h-dvh grid-rows-[auto_1fr_auto]">
+        <!-- header -->
+        <header >
+            {% include 'components/header.html' %}
+        </header>
+
+        <!-- main -->
+        <main class="flex-grow">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <!-- footer -->
+        {% include 'components/footer.html' %}
+    </body>
+<html>

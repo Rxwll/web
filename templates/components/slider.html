@@ -1,0 +1,87 @@
+{% load static %}
+<div class="relative w-full h-[600px] md:h-[700px] overflow-hidden">
+    <div id="slider"
+         class="flex transition-transform duration-500 ease-in-out h-full">
+        {% for image in carrusel.imagenes.all %}
+            <div class="flex-shrink-0 w-full h-full bg-cover bg-center relative"
+                style="background-image: url('{{ image.imagen.url }}')">
+                <div class="absolute top-8 left-8 z-10">
+                    <img src="{% static 'slider/logobanner.png' %}"
+                         alt="Company Logo"
+                         class="w-40 h-auto">
+                </div>
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+            </div>
+        {% endfor %}
+    </div>
+    <button id="prevBtn"
+            class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 text-black p-2 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke="currentColor"
+             class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+    </button>
+    <button id="nextBtn"
+            class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 text-black p-2 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke="currentColor"
+             class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+    </button>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slider = document.getElementById('slider');
+        const slides = slider.children;
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            showSlide((currentSlide + 1) % slides.length);
+        }
+
+        function prevSlide() {
+            showSlide((currentSlide - 1 + slides.length) % slides.length);
+        }
+
+        function startSlideShow() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function stopSlideShow() {
+            clearInterval(slideInterval);
+        }
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            stopSlideShow();
+            startSlideShow();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            stopSlideShow();
+            startSlideShow();
+        });
+
+        slider.addEventListener('mouseenter', stopSlideShow);
+        slider.addEventListener('mouseleave', startSlideShow);
+
+        // Initialize the first slide and start the slideshow
+        showSlide(0);
+        startSlideShow();
+    });
+</script>

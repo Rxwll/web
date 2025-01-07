@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Acerca de{% endblock %}
+{% block content %}
+<div class="text-white">
+    <div class="min-h-screen flex justify-center items-center bg-cover bg-center bg-fixed relative" style="background-image: url('{% static 'about/aboutbackground.jpeg' %}');">
+        <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+        <div class="container max-w-7xl mx-auto px-4 py-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-black bg-opacity-80 p-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                    <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-white">Misión</h2>
+                    <p class="text-sm">Crear instrumentos de cuerda de alta gama que inspiren y acompañen a músicos de todos los niveles, especialmente el bajoquinto, mientras contribuimos al desarrollo social y medioambiental de nuestra comunidad a través de programas de apoyo a niños de bajos recursos y la reforestación de nuestra región.</p>
+                </div>
+                
+                <div class="bg-black bg-opacity-80 p-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                    <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-white">Visión</h2>
+                    <p class="text-sm">Ser reconocidos a nivel nacional como líderes en la construcción de instrumentos de cuerda de alta calidad, destacando en el ámbito musical y social, y estableciendo relaciones significativas con grandes artistas que valoren nuestra dedicación y compromiso con la excelencia y la responsabilidad social.</p>
+                </div>
+                
+                <div class="bg-black bg-opacity-80 p-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                    <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-white">Valores</h2>
+                    <ul class="list-disc pl-5 text-sm space-y-2">
+                        <li>Calidad: Nos comprometemos a ofrecer instrumentos de la más alta calidad, cuidando cada detalle en su construcción.</li>
+                        <li>Responsabilidad Social: Apoyamos a comunidades desfavorecidas y promovemos la educación y el bienestar de los niños.</li>
+                        <li>Sostenibilidad: Fomentamos prácticas ecológicas, contribuyendo a la reforestación y el cuidado del medio ambiente.</li>
+                        <li>Pasión: Nuestra dedicación por la música y la artesanía se refleja en cada instrumento que creamos.</li>
+                        <li>Colaboración: Trabajamos en conjunto con artistas y comunidades para crear un impacto positivo y duradero.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

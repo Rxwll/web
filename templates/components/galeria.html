@@ -1,0 +1,22 @@
+<div class="flex flex-col lg:flex-row gap-4">
+    <!-- Thumbnails -->
+    <div class="flex flex-row lg:flex-col order-2 lg:order-1 overflow-x-auto lg:overflow-y-auto lg:max-h-[500px] gap-2">
+        {% for imagen in guitarra.galeria.get_imagenes %}
+            <div class="thumbnail flex-shrink-0 w-20 h-20 cursor-pointer {% if guitarra.galeria.imagen_principal.url == imagen.url %}border-2 border-black{% else %}border border-gray-300{% endif %}"
+                 onclick="setMainThumbnail('{{ imagen.url }}', {{ forloop.counter }})">
+                <img src="{{ imagen.url }}"
+                     alt="Thumbnail {{ forloop.counter }}"
+                     class="object-cover w-full h-full">
+            </div>
+        {% endfor %}
+    </div>
+    <!-- Main Image -->
+    <div class="grow order-1 lg:order-2">
+        <div class="relative w-full pb-[100%]">
+            <img id="mainImage"
+                 src="{{ guitarra.galeria.imagen_principal.url }}"
+                 alt="Main Product Image"
+                 class="absolute inset-0 w-full h-full object-cover rounded-lg">
+        </div>
+    </div>
+</div>

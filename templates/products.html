@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Ambakiti - Guitarras{% endblock %}
+{% block content %}
+<div class="flex-row">
+    <div class="">
+        <!-- Filtros -->
+        {% include 'components/busqueda.html' %}
+    </div>
+
+    <div class="flex-grow m-auto">
+        <!-- Guitarras -->
+        {% include 'components/tarjeta_guitarra.html' %}
+    </div>
+
+    <!-- pages -->
+    <div class="">
+        {% include 'components/paginacion.html' %}
+    <div>
+</div>
+{% endblock %}
+
