@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Acabado, Color, Guitarra, Galeria, Carrusel, ImagenCarrusel, Accesorios, TipoMadera  
+from .models import Acabado, Color, Bajoquinto, Galeria, Carrusel, ImagenCarrusel, Accesorios, TipoMadera  
 
 
 class AcabadoAdmin(admin.ModelAdmin):
@@ -18,7 +18,7 @@ class GaleriaInline(admin.StackedInline):
     fields = ('imagen_principal', 'imagen_extra_1', 'imagen_extra_2', 'imagen_extra_3', 'imagen_extra_4')
 
 
-class GuitarraAdmin(admin.ModelAdmin):
+class BajoquintoAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'descripcion', 'precio')
     search_fields = ('nombre', 'precio')
     list_per_page = 10  
@@ -51,7 +51,7 @@ class ImagenCarruselAdmin(admin.ModelAdmin):
     list_display = ('carrusel', 'orden')
     
 
-admin.site.register(Guitarra, GuitarraAdmin)
+admin.site.register(Bajoquinto, BajoquintoAdmin)
 admin.site.register(TipoMadera, TipoMaderaAdmin)
 admin.site.register(Accesorios, AccesoriosAdmin)
 admin.site.register(Color, ColorAdmin)

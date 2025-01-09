@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from .models import Color, Acabado, Carrusel, Guitarra
+from .models import Color, Acabado, Carrusel, Bajoquinto  
 
 def home(request):
     carrusel = Carrusel.objects.prefetch_related('imagenes').first()
@@ -12,7 +12,7 @@ def about(request):
 
 
 def products(request):
-    guitarras = Guitarra.objects.all()
+    guitarras = Bajoquinto.objects.all()
     colores = Color.objects.all()
 
     min_price = request.GET.get('price_min')
@@ -46,7 +46,7 @@ def products(request):
 
 
 def guitar_detail(request, id):
-    guitarra = get_object_or_404(Guitarra, id=id) 
+    guitarra = get_object_or_404(Bajoquinto, id=id) 
 
     return render(request, 'detalles_guitarra.html', {
         'guitarra': guitarra})

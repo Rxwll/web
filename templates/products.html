@@ -1,10 +1,20 @@
 {% extends 'base.html' %}
-{% block title %}Ambakiti - Guitarras{% endblock %}
+{% block title %}Ambakiti - Productos{% endblock %}
 {% block content %}
 <div class="flex-row">
-    <div class="">
-        <!-- Filtros -->
-        {% include 'components/busqueda.html' %}
+    <div class="mb-2 py-2 border-b border-gray-300">
+        <div id="expandable" class=" overflow-hidden transition-all duration-300 max-h-0">
+                {% include 'components/busqueda.html' %}
+            </div> <button
+                id="toggleButton"
+                class="w-full mx-auto flex justify-between items-center bg-whtie text-black px-2 py-2 max-w-xl focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition duration-150 ease-in-out"
+            >
+                <span id="mensajeBoton">Click para mostrar fitros</span>
+                <svg id="arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4 4a.75.75 0 01-1.06 0l-4-4a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
     </div>
 
     <div class="flex-grow m-auto">
@@ -17,5 +27,27 @@
         {% include 'components/paginacion.html' %}
     <div>
 </div>
+<script>
+        function toggleExpand() {
+            const expandable = document.getElementById('expandable');
+            const arrow = document.getElementById('arrow');
+            let mensajeBoton = document.getElementById('mensajeBoton');
+
+
+            if (expandable.style.maxHeight) {
+                expandable.style.maxHeight = null;
+                arrow.style.transform = 'rotate(0deg)';
+                mensajeBoton.innerHTML = 'Click para mostrar filtros';
+            } else {
+                expandable.style.maxHeight = expandable.scrollHeight + "px";
+                arrow.style.transform = 'rotate(180deg)';
+                mensajeBoton.innerHTML = 'Click para ocultar filtros';
+            }
+        }
+
+
+        document.getElementById('toggleButton').addEventListener('click', toggleExpand);
+    </script>
 {% endblock %}
+
 

@@ -5,9 +5,17 @@
     <div class="grid mb-20 grid-cols-1 lg:grid-cols-2 p-4 gap-0">
         <div class="flex-auto flex-row mx-4 my-auto ">
             {% include 'components/galeria.html' %}
-            <div class="m-4">
-                {% include 'components/detalles.html' %}
+            <div class="flex">
+                    <div id="expandable" class="overflow-hidden transition-all duration-300 max-w-0">
+                        {% include 'components/compartir.html' %}
+                    </div>
+                    <button
+                        id="toggleButton"
+                        class="max-w-300 flex my-2 justify-between items-center bg-black text-white px-2 py-2 focus:outline-none focus:ring-0 focus:ring-black focus:border-transparent transition duration-150 ease-in-out"
+                        <span id="mensajeBoton">Compartir</span>
+                    </button>
             </div>
+            {% include 'components/detalles.html' %}
         </div>
 
         <div class="">
@@ -34,6 +42,38 @@ function setMainThumbnail(imageUrl, index) {
         }
     });
 }
+
+    function shareOnFacebook() {
+        window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
+    }
+
+    function shareOnTwitter() {
+        window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href), '_blank');
+    }
+
+    function shareOnWhatsApp() {
+        window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank');
+    }
+
+    function copyLink() {
+        navigator.clipboard.writeText(window.location.href).then(function() {
+            alert('Enlace copiado al portapapeles');
+        }, function(err) {
+            console.error('No se pudo copiar el texto: ', err);
+        });
+    }
+    function toggleExpand() {
+        const expandable = document.getElementById('expandable');
+
+        if (expandable.style.maxWidth) {
+            expandable.style.maxWidth = null;
+        } else {
+            expandable.style.maxWidth = 500 + "px";
+        }
+    }
+
+
+    document.getElementById('toggleButton').addEventListener('click', toggleExpand);
 </script>
 {% endblock %}
 
