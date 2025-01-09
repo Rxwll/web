@@ -1,11 +1,18 @@
 from django.contrib import admin
-from .models import Acabado, Color, Bajoquinto, Galeria, Carrusel, ImagenCarrusel, Accesorios, TipoMadera  
+from .models import Gamas, Acabado, Color, Bajoquinto, Galeria, Carrusel, ImagenCarrusel, Accesorios, TipoMadera  
 
+
+class GamasAdmin(admin.ModelAdmin):
+    list_display = ['categoria','descripcion']
+    search_fields = ['categoria']
+    list_per_page = 3 
+    
 
 class AcabadoAdmin(admin.ModelAdmin):
     list_display = ['nombre']
     search_fields = ['nombre']
     list_per_page = 10
+
 
 class ColorAdmin(admin.ModelAdmin):
     list_display = ['nombre']
@@ -56,6 +63,7 @@ admin.site.register(TipoMadera, TipoMaderaAdmin)
 admin.site.register(Accesorios, AccesoriosAdmin)
 admin.site.register(Color, ColorAdmin)
 admin.site.register(Acabado, AcabadoAdmin)
+admin.site.register(Gamas, GamasAdmin)
 
 
 

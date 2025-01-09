@@ -1,10 +1,17 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from .models import Color, Acabado, Carrusel, Bajoquinto  
+from .models import Gamas, Color, Acabado, Carrusel, Bajoquinto  
 
 def home(request):
     carrusel = Carrusel.objects.prefetch_related('imagenes').first()
-    return render(request, 'home.html', {'carrusel': carrusel})
+    gamas = Gamas.objects.all() 
+
+    context = {
+        'carrusel': carrusel,
+        'gamas': gamas,
+    }
+
+    return render(request, 'home.html', context)
 
 
 def about(request):
